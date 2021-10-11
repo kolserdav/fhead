@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "headers": "file-headers config"
+    "file-headers": "node file-headers"
   },
   "dependencies": {
-    "file-headers": "^0.0.5"
+    "file-headers": "^0.0.6"
   }
 }
