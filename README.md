@@ -5,7 +5,7 @@ Utility which added headers to all files of specidied directory
 ## Instalation
 
 ```
-npm install file-headers
+npm install --save-dev file-headers
 ```
 
 ## Configuration
