@@ -1,8 +1,8 @@
 {
   "name": "file-headers",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "bin": {
-    "file-headers": "./bin/index.js"
+    "file-headers": "./bin/file-headers.js"
   },
   "repository": "https://github.com/kolserdav/file-headers",
   "author": "kolserdav <serega12101983@gmail.com>",

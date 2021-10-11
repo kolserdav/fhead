@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-file-headers@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/file-headers/-/file-headers-0.0.9.tgz#4445ddfd048f736292d9b82751425eddc1a2a6d8"
-  integrity sha512-Phe948fE5pymuKKhG4TWEbiziLaDFnlf1dw10kunNYm5qdoP+gtgdSbdQjnIU6vyObKzhnMlYnqIQpIPLmcOGw==
+file-headers@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/file-headers/-/file-headers-0.0.10.tgz#56b87fc2fdb9d7c96a1201d9c97de4475f30926f"
+  integrity sha512-ONsPI9+SR+rhsIoMuqPbyTgKO3v7UpSi21w3q2G8G6gSD0VES1TsSFFKP43RO6NtVpAilUKEs7bn9Yz+lD54xw==
