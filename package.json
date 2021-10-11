@@ -1,10 +1,8 @@
 {
   "name": "file-headers",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "dist/index.js",
-  "bin": {
-    "file-headers": "./dist/index.js config"
-  },
+  "bin": "./dist/index.js config",
   "repository": "https://github.com/kolserdav/file-headers",
   "author": "kolserdav <serega12101983@gmail.com>",
   "license": "MIT",
