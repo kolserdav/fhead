@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "main": "dist/index.js",
   "bin": {
-    "config": "./dist/index.js config"
+    "file-headers": "./dist/index.js config"
   },
   "repository": "https://github.com/kolserdav/file-headers",
   "author": "kolserdav <serega12101983@gmail.com>",

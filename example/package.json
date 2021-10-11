@@ -1,0 +1,12 @@
+{
+  "name": "example",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "headers": "file-headers config"
+  },
+  "dependencies": {
+    "file-headers": "^0.0.5"
+  }
+}
