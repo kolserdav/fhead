@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -63,7 +64,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * Email: <uyem.ru@gmail.com>
  * License: MIT
  * License Text: All rights reserved (c)
- * Create date: Mon Oct 11 2021 14:52:03 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Mon Oct 11 2021 14:52:49 GMT+0700 (Krasnoyarsk Standard Time)
 ****************************************************************/
 var fs_1 = __importStar(require("fs"));
 var path_1 = __importDefault(require("path"));
