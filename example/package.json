@@ -7,6 +7,6 @@
     "file-headers": "file-headers"
   },
   "dependencies": {
-    "file-headers": "^0.0.7"
+    "file-headers": "^0.0.8"
   }
 }
