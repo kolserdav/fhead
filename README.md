@@ -15,6 +15,7 @@ npm install --save-dev file-headers
 ```json
 {
   "root": "src",
+  "repository": "https://github.com/kolserdav/file-headers.git",
   "patterns": [".js", ".jsx", ".ts", ".tsx"],
   "exclude": ["node_modules"],
   "name": "Sergey Kolmiller",
