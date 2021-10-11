@@ -3,7 +3,7 @@
  * Email: <uyem.ru@gmail.com>
  * License: MIT
  * License Text: All rights reserved (c)
- * Create date: Mon Oct 11 2021 14:50:08 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Mon Oct 11 2021 14:52:03 GMT+0700 (Krasnoyarsk Standard Time)
 ****************************************************************/
 import fs, { readdir, readdirSync } from 'fs';
 import path from 'path';

@@ -63,7 +63,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * Email: <uyem.ru@gmail.com>
  * License: MIT
  * License Text: All rights reserved (c)
- * Create date: Mon Oct 11 2021 14:50:08 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Mon Oct 11 2021 14:52:03 GMT+0700 (Krasnoyarsk Standard Time)
 ****************************************************************/
 var fs_1 = __importStar(require("fs"));
 var path_1 = __importDefault(require("path"));
