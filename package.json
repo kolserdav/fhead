@@ -1,6 +1,6 @@
 {
   "name": "file-headers",
-  "version": "0.0.11",
+  "version": "0.1.0",
   "bin": {
     "file-headers": "./bin/file-headers.js"
   },
@@ -8,7 +8,7 @@
   "author": "kolserdav <serega12101983@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc -p .",
+    "build": "tsc -p . && node scripts/index.js env",
     "start": "node ${npm_package_main}",
     "dev:watch": "tsc -p . -w",
     "dev:start": "nodemon ${npm_package_main}"
