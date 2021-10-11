@@ -7,6 +7,7 @@ const CONFIG_PATH = path.resolve(__dirname, root, 'file-headers.json');
 
 const DEFAULT_CONFIG = {
   root: 'src',
+  repository: 'https://github.com/kolserdav/file-headers.git',
   patterns: ['.js', '.jsx', '.ts', '.tsx'],
   exclude: ['node_modules'],
   name: 'Sergey Kolmiller',
@@ -43,6 +44,7 @@ function createDefaultConfig(): void {
         const filePath = path.resolve(root, item);
         let fileData = fs.readFileSync(filePath).toString();
         let data = `/****************************************************************
+ * Repository ${CONFIG.repository}
  * Author: ${CONFIG.name}
  * Email: <${CONFIG.email}>
  * License: ${CONFIG.license}
