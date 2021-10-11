@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -59,13 +58,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-/****************************************************************
- * Author: Sergey Kolmiller
- * Email: <uyem.ru@gmail.com>
- * License: MIT
- * License Text: All rights reserved (c)
- * Create date: Mon Oct 11 2021 14:52:49 GMT+0700 (Krasnoyarsk Standard Time)
-****************************************************************/
 var fs_1 = __importStar(require("fs"));
 var path_1 = __importDefault(require("path"));
 var root = process.env.NODE_ENV === 'production' ? '../../../' : '../';
@@ -77,7 +69,8 @@ var DEFAULT_CONFIG = {
     name: 'Sergey Kolmiller',
     email: 'uyem.ru@gmail.com',
     license: 'MIT',
-    licenseText: 'All rights reserved (c)'
+    licenseText: '',
+    copyright: 'kolserdav, All rights reserved (c)'
 };
 var CONFIG;
 function createDefaultConfig() {
@@ -102,7 +95,7 @@ function createDefaultConfig() {
             if (_include) {
                 var filePath = path_1.default.resolve(root, item);
                 var fileData = fs_1.default.readFileSync(filePath).toString();
-                var data = "/****************************************************************\n * Author: " + CONFIG.name + "\n * Email: <" + CONFIG.email + ">\n * License: " + CONFIG.license + "\n * License Text: " + CONFIG.licenseText + "\n * Create date: " + new Date + "\n****************************************************************/\n";
+                var data = "/****************************************************************\n * Author: " + CONFIG.name + "\n * Email: <" + CONFIG.email + ">\n * License: " + CONFIG.license + "\n * License Text: " + CONFIG.licenseText + "\n * Copyright: " + CONFIG.copyright + "\n * Create date: " + new Date + "\n****************************************************************/\n";
                 var oldHeaderReg = /^\/\*{64}[\s\S.]*\*{64}\/\n/;
                 if (fileData.match(oldHeaderReg)) {
                     fileData = fileData.replace(oldHeaderReg, '');

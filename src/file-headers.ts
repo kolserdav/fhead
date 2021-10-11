@@ -1,10 +1,3 @@
-/****************************************************************
- * Author: Sergey Kolmiller
- * Email: <uyem.ru@gmail.com>
- * License: MIT
- * License Text: All rights reserved (c)
- * Create date: Mon Oct 11 2021 14:52:49 GMT+0700 (Krasnoyarsk Standard Time)
-****************************************************************/
 import fs, { readdir, readdirSync } from 'fs';
 import path from 'path';
 
@@ -19,7 +12,8 @@ const DEFAULT_CONFIG = {
   name: 'Sergey Kolmiller',
   email: 'uyem.ru@gmail.com',
   license: 'MIT',
-  licenseText: 'All rights reserved (c)'
+  licenseText: '',
+  copyright: 'kolserdav, All rights reserved (c)'
 };
 
 let CONFIG: typeof DEFAULT_CONFIG;
@@ -53,6 +47,7 @@ function createDefaultConfig(): void {
  * Email: <${CONFIG.email}>
  * License: ${CONFIG.license}
  * License Text: ${CONFIG.licenseText}
+ * Copyright: ${CONFIG.copyright}
  * Create date: ${new Date}
 ****************************************************************/\n`;
         const oldHeaderReg = /^\/\*{64}[\s\S.]*\*{64}\/\n/;
