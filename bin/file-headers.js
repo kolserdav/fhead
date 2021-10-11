@@ -65,6 +65,7 @@ var root = process.env.NODE_ENV === 'production' ? '../../../' : '../';
 var CONFIG_PATH = path_1.default.resolve(__dirname, root, 'file-headers.json');
 var DEFAULT_CONFIG = {
     root: 'src',
+    repository: 'https://github.com/kolserdav/file-headers.git',
     patterns: ['.js', '.jsx', '.ts', '.tsx'],
     exclude: ['node_modules'],
     name: 'Sergey Kolmiller',
@@ -96,7 +97,7 @@ function createDefaultConfig() {
             if (_include) {
                 var filePath = path_1.default.resolve(root, item);
                 var fileData = fs_1.default.readFileSync(filePath).toString();
-                var data = "/****************************************************************\n * Author: " + CONFIG.name + "\n * Email: <" + CONFIG.email + ">\n * License: " + CONFIG.license + "\n * License Text: " + CONFIG.licenseText + "\n * Copyright: " + CONFIG.copyright + "\n * Create date: " + new Date + "\n****************************************************************/\n";
+                var data = "/****************************************************************\n * Repository " + CONFIG.repository + "\n * Author: " + CONFIG.name + "\n * Email: <" + CONFIG.email + ">\n * License: " + CONFIG.license + "\n * License Text: " + CONFIG.licenseText + "\n * Copyright: " + CONFIG.copyright + "\n * Create date: " + new Date + "\n****************************************************************/\n";
                 var oldHeaderReg = /^\/\*{64}[\s\S.]*\*{64}\/\n/;
                 if (fileData.match(oldHeaderReg)) {
                     fileData = fileData.replace(oldHeaderReg, '');
