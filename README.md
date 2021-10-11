@@ -20,7 +20,8 @@ npm install --save-dev file-headers
   "name": "Sergey Kolmiller",
   "email": "uyem.ru@gmail.com",
   "license": "MIT",
-  "licenseText": "All rights reserved (c)"
+  "licenseText": "",
+  "copyright": "All rights reserved (c)"
 }
 ```
 
