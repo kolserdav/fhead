@@ -7,6 +7,6 @@
     "headers": "NODE_ENV=production file-headers"
   },
   "dependencies": {
-    "file-headers": "^1.0.4"
+    "file-headers": "^1.0.5"
   }
 }
