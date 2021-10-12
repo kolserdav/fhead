@@ -22,7 +22,8 @@ npm install --save-dev file-headers
   "email": "uyem.ru@gmail.com",
   "license": "MIT",
   "licenseText": "",
-  "copyright": "All rights reserved (c)"
+  "copyright": "All rights reserved (c)",
+  "renewAll": false
 }
 ```
 

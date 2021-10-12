@@ -1,6 +1,6 @@
 {
   "name": "file-headers",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "main": "bin/file-headers.js",
   "bin": {
     "file-headers": "./bin/file-headers.js"

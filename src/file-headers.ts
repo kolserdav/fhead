@@ -14,7 +14,8 @@ const DEFAULT_CONFIG = {
   email: 'uyem.ru@gmail.com',
   license: 'MIT',
   licenseText: '',
-  copyright: 'kolserdav, All rights reserved (c)'
+  copyright: 'kolserdav, All rights reserved (c)',
+  renewAll: false,
 };
 
 let CONFIG: typeof DEFAULT_CONFIG;
@@ -54,9 +55,14 @@ function createDefaultConfig(): void {
 ******************************************************************************************/\n`;
         const oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
         if (fileData.match(oldHeaderReg)) {
-          fileData = fileData.replace(oldHeaderReg, '');
+          if (CONFIG.renewAll) {
+            data += fileData.replace(oldHeaderReg, '');
+          } else {
+            data = fileData;
+          }
+        } else {
+          data += fileData;
         }
-        data += fileData;
         fs.writeFileSync(filePath, data);
       } else {
         const isDir = fs.lstatSync(itemPath).isDirectory();
