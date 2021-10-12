@@ -43,16 +43,16 @@ function createDefaultConfig(): void {
       if (_include) {
         const filePath = path.resolve(root, item);
         let fileData = fs.readFileSync(filePath).toString();
-        let data = `/****************************************************************
- * Repository ${CONFIG.repository}
+        let data = `/******************************************************************************************
+ * Repository: ${CONFIG.repository}
  * Author: ${CONFIG.name}
  * Email: <${CONFIG.email}>
  * License: ${CONFIG.license}
  * License Text: ${CONFIG.licenseText}
  * Copyright: ${CONFIG.copyright}
  * Create date: ${new Date}
-****************************************************************/\n`;
-        const oldHeaderReg = /^\/\*{64}[\s\S.]*\*{64}\/\n/;
+******************************************************************************************/\n`;
+        const oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
         if (fileData.match(oldHeaderReg)) {
           fileData = fileData.replace(oldHeaderReg, '');
         }

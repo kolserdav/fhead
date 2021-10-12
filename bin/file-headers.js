@@ -97,8 +97,8 @@ function createDefaultConfig() {
             if (_include) {
                 var filePath = path_1.default.resolve(root, item);
                 var fileData = fs_1.default.readFileSync(filePath).toString();
-                var data = "/****************************************************************\n * Repository " + CONFIG.repository + "\n * Author: " + CONFIG.name + "\n * Email: <" + CONFIG.email + ">\n * License: " + CONFIG.license + "\n * License Text: " + CONFIG.licenseText + "\n * Copyright: " + CONFIG.copyright + "\n * Create date: " + new Date + "\n****************************************************************/\n";
-                var oldHeaderReg = /^\/\*{64}[\s\S.]*\*{64}\/\n/;
+                var data = "/******************************************************************************************\n * Repository: " + CONFIG.repository + "\n * Author: " + CONFIG.name + "\n * Email: <" + CONFIG.email + ">\n * License: " + CONFIG.license + "\n * License Text: " + CONFIG.licenseText + "\n * Copyright: " + CONFIG.copyright + "\n * Create date: " + new Date + "\n******************************************************************************************/\n";
+                var oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
                 if (fileData.match(oldHeaderReg)) {
                     fileData = fileData.replace(oldHeaderReg, '');
                 }
