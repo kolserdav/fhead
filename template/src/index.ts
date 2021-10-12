@@ -1,10 +1,12 @@
-/****************************************************************
- * Author: Sergey Kol'miller
+/******************************************************************************************
+ * Repository: undefined
+ * Author: Sergey Kolmiller
  * Email: <uyem.ru@gmail.com>
  * License: MIT
- * License Text: All rights reserved (c) 2021
- * Create date: Mon Oct 11 2021 14:44:02 GMT+0700 (Krasnoyarsk Standard Time)
-****************************************************************/
+ * License Text: All rights reserved (c)
+ * Copyright: undefined
+ * Create date: Tue Oct 12 2021 17:09:12 GMT+0700 (Krasnoyarsk Standard Time)
+******************************************************************************************/
 
 console.log(2)
 

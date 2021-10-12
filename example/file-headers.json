@@ -13,5 +13,6 @@
   "email": "uyem.ru@gmail.com",
   "license": "MIT",
   "licenseText": "MIT",
-  "copyright": "All rights reserved (c)"
+  "copyright": "All rights reserved (c)",
+  "renewAll": false
 }

@@ -59,6 +59,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/******************************************************************************************
+ * Repository: undefined
+ * Author: Sergey Kolmiller
+ * Email: <uyem.ru@gmail.com>
+ * License: MIT
+ * License Text: All rights reserved (c)
+ * Copyright: undefined
+ * Create date: Tue Oct 12 2021 17:08:32 GMT+0700 (Krasnoyarsk Standard Time)
+******************************************************************************************/
 var fs_1 = __importStar(require("fs"));
 var path_1 = __importDefault(require("path"));
 var root = process.env.NODE_ENV === 'production' ? '../../../' : '../';
@@ -72,7 +81,8 @@ var DEFAULT_CONFIG = {
     email: 'uyem.ru@gmail.com',
     license: 'MIT',
     licenseText: '',
-    copyright: 'kolserdav, All rights reserved (c)'
+    copyright: 'kolserdav, All rights reserved (c)',
+    renewAll: false,
 };
 var CONFIG;
 function createDefaultConfig() {
@@ -100,9 +110,16 @@ function createDefaultConfig() {
                 var data = "/******************************************************************************************\n * Repository: " + CONFIG.repository + "\n * Author: " + CONFIG.name + "\n * Email: <" + CONFIG.email + ">\n * License: " + CONFIG.license + "\n * License Text: " + CONFIG.licenseText + "\n * Copyright: " + CONFIG.copyright + "\n * Create date: " + new Date + "\n******************************************************************************************/\n";
                 var oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
                 if (fileData.match(oldHeaderReg)) {
-                    fileData = fileData.replace(oldHeaderReg, '');
+                    if (CONFIG.renewAll) {
+                        data += fileData.replace(oldHeaderReg, '');
+                    }
+                    else {
+                        data = fileData;
+                    }
                 }
-                data += fileData;
+                else {
+                    data += fileData;
+                }
                 fs_1.default.writeFileSync(filePath, data);
             }
             else {
