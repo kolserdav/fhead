@@ -46,11 +46,13 @@ npm run headers
 ## Result
 
 ```javascript
-/****************************************************************
+/******************************************************************************************
+ * Repository: https://github.com/kolserdav/file-headers.git
  * Author: Sergey Kolmiller
  * Email: <uyem.ru@gmail.com>
  * License: MIT
- * License Text: All rights reserved (c)
- * Create date: Mon Oct 11 2021 15:00:28 GMT+0700 (Krasnoyarsk Standard Time)
- ****************************************************************/
+ * License Text:
+ * Copyright: kolserdav, All rights reserved (c)
+ * Create date: Wed Oct 13 2021 08:48:52 GMT+0700 (Krasnoyarsk Standard Time)
+ ******************************************************************************************/
 ```

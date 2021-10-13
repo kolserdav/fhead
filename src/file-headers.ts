@@ -1,11 +1,11 @@
 /******************************************************************************************
- * Repository: undefined
+ * Repository: https://github.com/kolserdav/file-headers.git
  * Author: Sergey Kolmiller
  * Email: <uyem.ru@gmail.com>
  * License: MIT
- * License Text: All rights reserved (c)
- * Copyright: undefined
- * Create date: Tue Oct 12 2021 17:08:32 GMT+0700 (Krasnoyarsk Standard Time)
+ * License Text: 
+ * Copyright: kolserdav, All rights reserved (c)
+ * Create date: Wed Oct 13 2021 08:48:52 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
 import fs, { readdir, readdirSync } from 'fs';
 import path from 'path';

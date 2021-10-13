@@ -5,7 +5,7 @@
  * License: MIT
  * License Text: All rights reserved (c)
  * Copyright: undefined
- * Create date: Tue Oct 12 2021 17:09:12 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Wed Oct 13 2021 08:47:53 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
 
 console.log(2)

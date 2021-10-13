@@ -1,5 +1,6 @@
 {
-  "root": "template/src",
+  "root": "src",
+  "repository": "https://github.com/kolserdav/file-headers.git",
   "patterns": [
     ".js",
     ".jsx",
@@ -12,6 +13,7 @@
   "name": "Sergey Kolmiller",
   "email": "uyem.ru@gmail.com",
   "license": "MIT",
-  "licenseText": "All rights reserved (c)",
-  "renewAll": false
+  "licenseText": "",
+  "copyright": "kolserdav, All rights reserved (c)",
+  "renewAll": true
 }
