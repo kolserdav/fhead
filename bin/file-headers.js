@@ -60,13 +60,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /******************************************************************************************
- * Repository: undefined
+ * Repository: https://github.com/kolserdav/file-headers.git
  * Author: Sergey Kolmiller
  * Email: <uyem.ru@gmail.com>
  * License: MIT
- * License Text: All rights reserved (c)
- * Copyright: undefined
- * Create date: Tue Oct 12 2021 17:08:32 GMT+0700 (Krasnoyarsk Standard Time)
+ * License Text:
+ * Copyright: kolserdav, All rights reserved (c)
+ * Create date: Wed Oct 13 2021 08:48:52 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
 var fs_1 = __importStar(require("fs"));
 var path_1 = __importDefault(require("path"));
@@ -104,7 +104,8 @@ function createDefaultConfig() {
                     _include = true;
                 }
             });
-            if (_include) {
+            var isDir = fs_1.default.lstatSync(itemPath).isDirectory();
+            if (_include && !isDir) {
                 var filePath = path_1.default.resolve(root, item);
                 var fileData = fs_1.default.readFileSync(filePath).toString();
                 var data = "/******************************************************************************************\n * Repository: " + CONFIG.repository + "\n * Author: " + CONFIG.name + "\n * Email: <" + CONFIG.email + ">\n * License: " + CONFIG.license + "\n * License Text: " + CONFIG.licenseText + "\n * Copyright: " + CONFIG.copyright + "\n * Create date: " + new Date + "\n******************************************************************************************/\n";
@@ -123,7 +124,6 @@ function createDefaultConfig() {
                 fs_1.default.writeFileSync(filePath, data);
             }
             else {
-                var isDir = fs_1.default.lstatSync(itemPath).isDirectory();
                 if (isDir) {
                     var subDirPath = path_1.default.resolve(root, item);
                     var dir = fs_1.readdirSync(subDirPath);

@@ -50,7 +50,8 @@ function createDefaultConfig(): void {
           _include = true;
         }
       });
-      if (_include) {
+      const isDir = fs.lstatSync(itemPath).isDirectory();
+      if (_include && !isDir) {
         const filePath = path.resolve(root, item);
         let fileData = fs.readFileSync(filePath).toString();
         let data = `/******************************************************************************************
@@ -74,7 +75,6 @@ function createDefaultConfig(): void {
         }
         fs.writeFileSync(filePath, data);
       } else {
-        const isDir = fs.lstatSync(itemPath).isDirectory();
         if (isDir) {
           const subDirPath = path.resolve(root, item);
           const dir = readdirSync(subDirPath);
