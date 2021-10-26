@@ -5,7 +5,7 @@
  * License: MIT
  * License Text: 
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Wed Oct 27 2021 00:42:38 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Wed Oct 27 2021 00:48:42 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
 import { readdir, readdirSync, writeFileSync, lstatSync, readFile, readFileSync } from 'fs';
 import path from 'path';

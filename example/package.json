@@ -3,10 +3,19 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
-  "scripts": {
-    "headers": "file-headers"
-  },
-  "dependencies": {
-    "file-headers": "^3.0.0"
+  "fhead": {
+    "root": "src",
+    "repository": "https://github.com/kolserdav/fhead.git",
+    "patterns": [
+      ".js",
+      ".ts"
+    ],
+    "exclude": ["test"],
+    "name": "Sergey Kolmiller",
+    "email": "serega12101983@gmail.com",
+    "license": "MIT",
+    "licenseText": "",
+    "copyright": "kolserdav, All rights reserved (c)",
+    "renewAll": true
   }
 }
