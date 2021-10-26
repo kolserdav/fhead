@@ -47,7 +47,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * License Text:
  * Copyright: kolserdav, All rights reserved (c)
  * Create date: Wed Oct 27 2021 01:25:16 GMT+0700 (Krasnoyarsk Standard Time)
-******************************************************************************************/
+ ******************************************************************************************/
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
 var PWD = process.env.PWD;
@@ -157,7 +157,7 @@ function main() {
                     // Set config global
                     CONFIG = _a.sent();
                     if (!CONFIG) {
-                        console.info(ERROR, "https://github.com/kolserdav/fhead#Configuration");
+                        console.info(ERROR, "Config in you package.json is not found see https://github.com/kolserdav/fhead#Configuration");
                         return [2 /*return*/, 1];
                     }
                     root = CONFIG.root;

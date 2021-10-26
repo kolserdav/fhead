@@ -3,10 +3,10 @@
  * Author: Sergey Kolmiller
  * Email: <serega12101983@gmail.com>
  * License: MIT
- * License Text: 
+ * License Text:
  * Copyright: kolserdav, All rights reserved (c)
  * Create date: Wed Oct 27 2021 01:25:16 GMT+0700 (Krasnoyarsk Standard Time)
-******************************************************************************************/
+ ******************************************************************************************/
 import {
   readdir,
   readdirSync,
@@ -137,7 +137,10 @@ export default async function main() {
     }
   );
   if (!CONFIG) {
-    console.info(ERROR, `https://github.com/kolserdav/fhead#Configuration`);
+    console.info(
+      ERROR,
+      `Config in you package.json is not found see https://github.com/kolserdav/fhead#Configuration`
+    );
     return 1;
   }
 
