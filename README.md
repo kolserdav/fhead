@@ -2,6 +2,8 @@
 
 Utility which added headers to all files of specidied directory
 
+**Project deprecated use https://github.com/kolserdav/fhead.git instead this**
+
 ## Instalation
 
 ```
