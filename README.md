@@ -5,7 +5,7 @@ Utility which added headers to all files of specidied directory
 ## Instalation
 
 ```
-npm install --save-dev file-headers
+npm install -g file-headers
 ```
 
 ## Configuration
@@ -29,18 +29,10 @@ npm install --save-dev file-headers
 
 - Add script to your `package.json` file:
 
-```json
-"scripts": {
-    ...
-    "headers": "NODE_ENV=production file-headers"
-    ...
-  },
-```
-
 ## Run
 
 ```
-npm run headers
+fhead
 ```
 
 ## Result

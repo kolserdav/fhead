@@ -5,16 +5,18 @@
  * License: MIT
  * License Text: 
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Tue Oct 26 2021 22:40:50 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Tue Oct 26 2021 22:52:11 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
 import { readdir, readdirSync, writeFileSync, lstatSync, readFile, readFileSync } from 'fs';
 import path from 'path';
 
-const { NODE_ENV, PWD }: any = process.env;
+const { PWD }: any = process.env;
 
-const root = NODE_ENV === 'production' ? '../../../' : './';
+const PROD = path.relative(PWD, __dirname) !== 'bin';
 
-const CONFIG_PATH = path.resolve(PWD, root, 'file-headers.json');
+const ROOT = PROD ? '../../../' : './';
+
+const CONFIG_PATH = path.resolve(PWD, ROOT, 'file-headers.json');
 
 const DEFAULT_CONFIG = {
   root: 'src',
@@ -38,6 +40,9 @@ function createDefaultConfig(): void {
 
 (async () => {
 
+  /**
+   * Recursive method 
+   */
   function parseDir(root: string, items: string[]): void {
     for (let i = 0; items[i]; i++) {
       const item = items[i];
@@ -109,7 +114,7 @@ function createDefaultConfig(): void {
   if (!CONFIG) {
     return;
   }
-  const sourcePath = path.resolve(root, CONFIG.root);
+  const sourcePath = path.resolve(ROOT, CONFIG.root);
   const source = await new Promise<string[] | void>((resolve, reject) => {
     readdir(sourcePath, (err, res) => {
       if (err) {
@@ -123,6 +128,7 @@ function createDefaultConfig(): void {
   if (!source) {
     return;
   }
+  // Run script
   parseDir(sourcePath, source);
   console.info('Success added headers!')
   })();

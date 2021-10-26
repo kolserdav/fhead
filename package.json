@@ -1,9 +1,9 @@
 {
   "name": "file-headers",
-  "version": "2.1.0",
-  "main": "bin/file-headers.js",
+  "version": "3.0.0",
+  "main": "bin/fhead.js",
   "bin": {
-    "file-headers": "NODE_ENV=production ./bin/file-headers.js"
+    "fhead": "./bin/fhead.js"
   },
   "repository": "https://github.com/kolserdav/file-headers",
   "author": "kolserdav <serega12101983@gmail.com>",
