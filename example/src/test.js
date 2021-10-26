@@ -1,11 +1,11 @@
 /******************************************************************************************
- * Repository: undefined
+ * Repository: https://github.com/kolserdav/fhead.git
  * Author: Sergey Kolmiller
- * Email: <uyem.ru@gmail.com>
+ * Email: <serega12101983@gmail.com>
  * License: MIT
- * License Text: MIT
- * Copyright: All rights reserved (c)
- * Create date: Tue Oct 12 2021 17:06:34 GMT+0700 (Krasnoyarsk Standard Time)
+ * License Text: 
+ * Copyright: kolserdav, All rights reserved (c)
+ * Create date: Wed Oct 27 2021 01:06:58 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
 
 console.log(1)

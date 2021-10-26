@@ -1,6 +1,6 @@
 {
   "name": "fhead",
-  "version": "3.1.1-alfa",
+  "version": "3.1.3-alfa",
   "main": "bin/fhead.js",
   "bin": {
     "fhead": "./bin/fhead.js"
@@ -14,6 +14,10 @@
     "dev:watch": "tsc -p . -w",
     "dev:start": "nodemon ${npm_package_main}"
   },
+  "files": [
+    "bin/fhead.js",
+    "bin/main.js"
+  ],
   "devDependencies": {
     "@types/node": "^16.10.3",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
