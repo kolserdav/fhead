@@ -41,63 +41,74 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /******************************************************************************************
- * Repository: https://github.com/kolserdav/file-headers.git
+ * Repository: https://github.com/kolserdav/fhead.git
  * Author: Sergey Kolmiller
- * Email: <uyem.ru@gmail.com>
+ * Email: <serega12101983@gmail.com>
  * License: MIT
  * License Text:
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Tue Oct 26 2021 22:52:11 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Wed Oct 27 2021 00:42:38 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
 var PWD = process.env.PWD;
+var ERROR = 'error';
+var WARNING = 'warning';
+var INFO = 'info';
 var PROD = path_1.default.relative(PWD, __dirname) !== 'bin';
-var ROOT = PROD ? '../../../' : './';
-var CONFIG_PATH = path_1.default.resolve(PWD, ROOT, 'file-headers.json');
+var ROOT = PROD ? PWD : './';
+var CONFIG_PATH = path_1.default.resolve(PWD, ROOT, 'package.json');
 var DEFAULT_CONFIG = {
-    root: 'src',
-    repository: 'https://github.com/kolserdav/file-headers.git',
-    patterns: ['.js', '.jsx', '.ts', '.tsx'],
-    exclude: ['node_modules'],
-    name: 'Sergey Kolmiller',
-    email: 'uyem.ru@gmail.com',
-    license: 'MIT',
-    licenseText: '',
-    copyright: 'kolserdav, All rights reserved (c)',
-    renewAll: false,
+    fhead: {
+        root: null,
+        repository: "https://github.com/kolserdav/fhead.git",
+        patterns: [
+            ".js",
+            ".ts"
+        ],
+        exclude: [''],
+        name: "Sergey Kolmiller",
+        email: "serega12101983@gmail.com",
+        license: "MIT",
+        licenseText: "",
+        copyright: "kolserdav, All rights reserved (c)",
+        renewAll: true
+    }
 };
-var CONFIG;
-function createDefaultConfig() {
-    (0, fs_1.writeFileSync)(CONFIG_PATH, JSON.stringify(DEFAULT_CONFIG, null, 2));
-    console.warn(new Date(), "Create default config file on " + CONFIG_PATH + " with value:", DEFAULT_CONFIG);
-}
+var CONFIG = null;
 (function () { return __awaiter(void 0, void 0, void 0, function () {
     /**
      * Recursive method
      */
     function parseDir(root, items) {
+        if (!CONFIG) {
+            return;
+        }
+        var exclude = CONFIG.exclude, patterns = CONFIG.patterns, repository = CONFIG.repository, name = CONFIG.name, email = CONFIG.email, license = CONFIG.license, licenseText = CONFIG.licenseText, copyright = CONFIG.copyright, renewAll = CONFIG.renewAll;
         var _loop_1 = function (i) {
             var item = items[i];
             var itemPath = path_1.default.resolve(root, item);
-            if (CONFIG.exclude.indexOf(item) !== -1) {
+            var isDir = (0, fs_1.lstatSync)(itemPath).isDirectory();
+            if (isDir && item === 'node_modules') {
+                return "continue";
+            }
+            if ((exclude === null || exclude === void 0 ? void 0 : exclude.indexOf(item)) !== -1) {
                 return "continue";
             }
             var _include = false;
-            CONFIG.patterns.map(function (pattern) {
+            patterns.map(function (pattern) {
                 var reg = new RegExp(pattern + "$");
                 if (reg.test(item)) {
                     _include = true;
                 }
             });
-            var isDir = (0, fs_1.lstatSync)(itemPath).isDirectory();
             if (_include && !isDir) {
                 var filePath = path_1.default.resolve(root, item);
                 var fileData = (0, fs_1.readFileSync)(filePath).toString();
-                var data = "/******************************************************************************************\n * Repository: " + CONFIG.repository + "\n * Author: " + CONFIG.name + "\n * Email: <" + CONFIG.email + ">\n * License: " + CONFIG.license + "\n * License Text: " + CONFIG.licenseText + "\n * Copyright: " + CONFIG.copyright + "\n * Create date: " + new Date + "\n******************************************************************************************/\n";
+                var data = "/******************************************************************************************\n * Repository: " + repository + "\n * Author: " + name + "\n * Email: <" + email + ">\n * License: " + license + "\n * License Text: " + licenseText + "\n * Copyright: " + copyright + "\n * Create date: " + new Date + "\n******************************************************************************************/\n";
                 var oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
                 if (fileData.match(oldHeaderReg)) {
-                    if (CONFIG.renewAll) {
+                    if (renewAll) {
                         data += fileData.replace(oldHeaderReg, '');
                     }
                     else {
@@ -121,37 +132,39 @@ function createDefaultConfig() {
             _loop_1(i);
         }
     }
-    var sourcePath, source;
+    var root, sourcePath, source;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, new Promise(function (resolve) {
                     (0, fs_1.readFile)(CONFIG_PATH, function (err, res) {
-                        var configData = Object.assign({}, DEFAULT_CONFIG);
                         if (err) {
-                            console.error(new Date(), "File " + CONFIG_PATH + " not found");
-                            createDefaultConfig();
-                            resolve(DEFAULT_CONFIG);
+                            console.error(ERROR, "File " + CONFIG_PATH + " not found");
+                            resolve(null);
                         }
                         else {
+                            var fhead = JSON.parse(res.toString()).fhead;
+                            var configData = Object.assign({}, fhead);
                             var strRes = res.toString();
                             try {
                                 configData = JSON.parse(strRes);
                             }
                             catch (e) {
-                                console.error(new Date(), "Invalid json in " + CONFIG_PATH + ": " + strRes);
-                                createDefaultConfig();
-                                resolve(DEFAULT_CONFIG);
+                                console.error(ERROR, "Invalid json in " + CONFIG_PATH + ": " + strRes);
+                                resolve(null);
                             }
-                            resolve(configData);
+                            resolve(configData.fhead);
                         }
                     });
                 })];
             case 1:
+                // Set config global
                 CONFIG = _a.sent();
                 if (!CONFIG) {
-                    return [2 /*return*/];
+                    console.info(ERROR, "Config in you package.json is not found see https://github.com/kolserdav/fhead.git/README.md#Configuration");
+                    return [2 /*return*/, 1];
                 }
-                sourcePath = path_1.default.resolve(ROOT, CONFIG.root);
+                root = CONFIG.root;
+                sourcePath = path_1.default.resolve(ROOT, root || '');
                 return [4 /*yield*/, new Promise(function (resolve, reject) {
                         (0, fs_1.readdir)(sourcePath, function (err, res) {
                             if (err) {

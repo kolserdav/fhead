@@ -10,21 +10,24 @@ npm install -g file-headers
 
 ## Configuration
 
-- Create file `file-headers.json` in root of your project:
+- Add to your `package.json` file the `fhead` object:
 
 ```json
-{
-  "root": "src",
-  "repository": "https://github.com/kolserdav/file-headers.git",
-  "patterns": [".js", ".jsx", ".ts", ".tsx"],
-  "exclude": ["node_modules"],
-  "name": "Sergey Kolmiller",
-  "email": "uyem.ru@gmail.com",
-  "license": "MIT",
-  "licenseText": "",
-  "copyright": "All rights reserved (c)",
-  "renewAll": false
-}
+"fhead": {
+    "root": "src",
+    "repository": "https://github.com/kolserdav/fhead.git",
+    "patterns": [
+      ".js",
+      ".ts"
+    ],
+    "exclude": [],
+    "name": "Sergey Kolmiller",
+    "email": "serega12101983@gmail.com",
+    "license": "MIT",
+    "licenseText": "",
+    "copyright": "kolserdav, All rights reserved (c)",
+    "renewAll": true
+  }
 ```
 
 - Add script to your `package.json` file:
@@ -41,7 +44,7 @@ fhead
 /******************************************************************************************
  * Repository: https://github.com/kolserdav/file-headers.git
  * Author: Sergey Kolmiller
- * Email: <uyem.ru@gmail.com>
+ * Email: <serega12101983@gmail.com>
  * License: MIT
  * License Text:
  * Copyright: kolserdav, All rights reserved (c)

@@ -1,6 +1,6 @@
 {
   "name": "fhead",
-  "version": "3.0.3",
+  "version": "3.1.0-alfa",
   "main": "bin/fhead.js",
   "bin": {
     "fhead": "./bin/fhead.js"
@@ -24,5 +24,23 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "typescript": "^4.4.4"
+  },
+  "nodemonConfig": {
+    "ignore": ["src"]
+  },
+  "fhead": {
+    "root": "src",
+    "repository": "https://github.com/kolserdav/fhead.git",
+    "patterns": [
+      ".js",
+      ".ts"
+    ],
+    "exclude": ["test"],
+    "name": "Sergey Kolmiller",
+    "email": "serega12101983@gmail.com",
+    "license": "MIT",
+    "licenseText": "",
+    "copyright": "kolserdav, All rights reserved (c)",
+    "renewAll": true
   }
 }
