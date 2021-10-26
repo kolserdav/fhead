@@ -84,6 +84,9 @@ function main() {
             var exclude = CONFIG.exclude, patterns = CONFIG.patterns, repository = CONFIG.repository, name = CONFIG.name, email = CONFIG.email, license = CONFIG.license, licenseText = CONFIG.licenseText, copyright = CONFIG.copyright, renewAll = CONFIG.renewAll;
             var _loop_1 = function (i) {
                 var item = items[i];
+                if (/^\./.test(item)) {
+                    return "continue";
+                }
                 var itemPath = path_1.default.resolve(root, item);
                 var isDir = (0, fs_1.lstatSync)(itemPath).isDirectory();
                 if (isDir && item === "node_modules") {
@@ -157,7 +160,7 @@ function main() {
                     // Set config global
                     CONFIG = _a.sent();
                     if (!CONFIG) {
-                        console.info(ERROR, "Config in you package.json is not found see https://github.com/kolserdav/fhead#Configuration");
+                        console.warn(WARNING, "Config in you package.json is not found see https://github.com/kolserdav/fhead#Configuration");
                         return [2 /*return*/, 1];
                     }
                     root = CONFIG.root;
@@ -170,7 +173,8 @@ function main() {
                                 resolve(res);
                             });
                         }).catch(function (e) {
-                            console.error(new Date(), e);
+                            console.error(ERROR, e.message);
+                            console.warn(WARNING, "Specified root path cannot be reading");
                         })];
                 case 2:
                     source = _a.sent();
@@ -179,7 +183,7 @@ function main() {
                     }
                     // Run script
                     parseDir(sourcePath, source);
-                    console.info("Success added headers!");
+                    console.info(INFO, "Success added headers!");
                     return [2 /*return*/];
             }
         });

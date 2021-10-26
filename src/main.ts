@@ -3,10 +3,10 @@
  * Author: Sergey Kolmiller
  * Email: <serega12101983@gmail.com>
  * License: MIT
- * License Text:
+ * License Text: 
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Wed Oct 27 2021 01:25:16 GMT+0700 (Krasnoyarsk Standard Time)
- ******************************************************************************************/
+ * Create date: Wed Oct 27 2021 01:57:13 GMT+0700 (Krasnoyarsk Standard Time)
+******************************************************************************************/
 import {
   readdir,
   readdirSync,
@@ -65,6 +65,9 @@ export default async function main() {
     } = CONFIG;
     for (let i = 0; items[i]; i++) {
       const item = items[i];
+      if (/^\./.test(item)) {
+        continue;
+      }
       const itemPath = path.resolve(root, item);
       const isDir = lstatSync(itemPath).isDirectory();
       if (isDir && item === "node_modules") {
