@@ -1,0 +1,8 @@
+{
+  "eslint.validate": ["javascript"],
+  "eslint.options": { "configFile": ".eslintrc" },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.formatOnSave": true
+  }
+}

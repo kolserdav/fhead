@@ -5,58 +5,71 @@
  * License: MIT
  * License Text: 
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Wed Oct 27 2021 01:01:23 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Wed Oct 27 2021 01:25:16 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
-import { readdir, readdirSync, writeFileSync, lstatSync, readFile, readFileSync } from 'fs';
-import path from 'path';
+import {
+  readdir,
+  readdirSync,
+  writeFileSync,
+  lstatSync,
+  readFile,
+  readFileSync,
+} from "fs";
+import path from "path";
 
 const { PWD }: any = process.env;
 
-const ERROR = 'error';
-const WARNING = 'warning';
-const INFO = 'info';
+const ERROR = "error";
+const WARNING = "warning";
+const INFO = "info";
 
-const PROD = path.relative(PWD, __dirname) !== 'bin';
-const ROOT = PROD ? PWD : './';
-const CONFIG_PATH = path.resolve(PWD, ROOT, 'package.json');
+const PROD = path.relative(PWD, __dirname) !== "bin";
+const ROOT = PROD ? PWD : "./";
+const CONFIG_PATH = path.resolve(PWD, ROOT, "package.json");
 
 const DEFAULT_CONFIG = {
   fhead: {
     root: null,
     repository: "https://github.com/kolserdav/fhead.git",
-    patterns: [
-      ".js",
-      ".ts"
-    ],
-    exclude: [''],
+    patterns: [".js", ".ts"],
+    exclude: [""],
     name: "Sergey Kolmiller",
     email: "serega12101983@gmail.com",
     license: "MIT",
     licenseText: "",
     copyright: "kolserdav, All rights reserved (c)",
-    renewAll: true
-  }
+    renewAll: true,
+  },
 };
 
-let CONFIG: typeof DEFAULT_CONFIG['fhead'] | null = null;
+let CONFIG: typeof DEFAULT_CONFIG["fhead"] | null = null;
 
 export default async function main() {
-
   /**
-   * Recursive method 
+   * Recursive method
    */
   function parseDir(root: string, items: string[]): void {
     if (!CONFIG) {
       return;
     }
-    const { exclude, patterns, repository, name, email, license, licenseText, copyright, renewAll } = CONFIG;
+    const {
+      exclude,
+      patterns,
+      repository,
+      name,
+      email,
+      license,
+      licenseText,
+      copyright,
+      renewAll,
+    } = CONFIG;
     for (let i = 0; items[i]; i++) {
       const item = items[i];
       const itemPath = path.resolve(root, item);
       const isDir = lstatSync(itemPath).isDirectory();
-      if (isDir && item === 'node_modules') {
+      if (isDir && item === "node_modules") {
         continue;
-      } 
+      }
       if (exclude?.indexOf(item) !== -1) {
         continue;
       }
@@ -70,7 +83,7 @@ export default async function main() {
       });
       if (_include && !isDir) {
         const filePath = path.resolve(root, item);
-        let fileData = readFileSync(filePath).toString();
+        const fileData = readFileSync(filePath).toString();
         let data = `/******************************************************************************************
  * Repository: ${repository}
  * Author: ${name}
@@ -78,12 +91,12 @@ export default async function main() {
  * License: ${license}
  * License Text: ${licenseText}
  * Copyright: ${copyright}
- * Create date: ${new Date}
+ * Create date: ${new Date()}
 ******************************************************************************************/\n`;
         const oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
         if (fileData.match(oldHeaderReg)) {
           if (renewAll) {
-            data += fileData.replace(oldHeaderReg, '');
+            data += fileData.replace(oldHeaderReg, "");
           } else {
             data = fileData;
           }
@@ -102,33 +115,35 @@ export default async function main() {
   }
 
   // Set config global
-  CONFIG =  await new Promise<typeof DEFAULT_CONFIG['fhead'] | null>((resolve) => {
-    readFile(CONFIG_PATH, (err, res) => {
-      if (err) {
-        console.error(ERROR, `File ${CONFIG_PATH} not found`);
-        resolve(null);
-      } else {
-        const { fhead } = JSON.parse(res.toString());
-        let configData = Object.assign({}, fhead);
-        const strRes = res.toString();
-        try {
-          configData = JSON.parse(strRes);
-        } catch(e) {
-          console.error(ERROR, `Invalid json in ${CONFIG_PATH}: ${strRes}`);
+  CONFIG = await new Promise<typeof DEFAULT_CONFIG["fhead"] | null>(
+    (resolve) => {
+      readFile(CONFIG_PATH, (err, res) => {
+        if (err) {
+          console.error(ERROR, `File ${CONFIG_PATH} not found`);
           resolve(null);
+        } else {
+          const { fhead } = JSON.parse(res.toString());
+          let configData = Object.assign({}, fhead);
+          const strRes = res.toString();
+          try {
+            configData = JSON.parse(strRes);
+          } catch (e) {
+            console.error(ERROR, `Invalid json in ${CONFIG_PATH}: ${strRes}`);
+            resolve(null);
+          }
+          resolve(configData.fhead);
         }
-        resolve(configData.fhead);
-      }
-    });
-  });
+      });
+    }
+  );
   if (!CONFIG) {
-    console.info(ERROR, `Config in you package.json is not found see https://github.com/kolserdav/fhead.git/README.md#Configuration`,)
+    console.info(ERROR, `https://github.com/kolserdav/fhead#Configuration`);
     return 1;
   }
 
   // Get source path
   const { root } = CONFIG;
-  const sourcePath = path.resolve(ROOT, root || '');
+  const sourcePath = path.resolve(ROOT, root || "");
   const source = await new Promise<string[] | void>((resolve, reject) => {
     readdir(sourcePath, (err, res) => {
       if (err) {
@@ -145,5 +160,5 @@ export default async function main() {
 
   // Run script
   parseDir(sourcePath, source);
-  console.info('Success added headers!')
-  };
+  console.info("Success added headers!");
+}

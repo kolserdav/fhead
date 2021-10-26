@@ -46,33 +46,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * License: MIT
  * License Text:
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Wed Oct 27 2021 01:01:23 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Wed Oct 27 2021 01:25:16 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
 var PWD = process.env.PWD;
-var ERROR = 'error';
-var WARNING = 'warning';
-var INFO = 'info';
-var PROD = path_1.default.relative(PWD, __dirname) !== 'bin';
-var ROOT = PROD ? PWD : './';
-var CONFIG_PATH = path_1.default.resolve(PWD, ROOT, 'package.json');
+var ERROR = "error";
+var WARNING = "warning";
+var INFO = "info";
+var PROD = path_1.default.relative(PWD, __dirname) !== "bin";
+var ROOT = PROD ? PWD : "./";
+var CONFIG_PATH = path_1.default.resolve(PWD, ROOT, "package.json");
 var DEFAULT_CONFIG = {
     fhead: {
         root: null,
         repository: "https://github.com/kolserdav/fhead.git",
-        patterns: [
-            ".js",
-            ".ts"
-        ],
-        exclude: [''],
+        patterns: [".js", ".ts"],
+        exclude: [""],
         name: "Sergey Kolmiller",
         email: "serega12101983@gmail.com",
         license: "MIT",
         licenseText: "",
         copyright: "kolserdav, All rights reserved (c)",
-        renewAll: true
-    }
+        renewAll: true,
+    },
 };
 var CONFIG = null;
 function main() {
@@ -89,7 +86,7 @@ function main() {
                 var item = items[i];
                 var itemPath = path_1.default.resolve(root, item);
                 var isDir = (0, fs_1.lstatSync)(itemPath).isDirectory();
-                if (isDir && item === 'node_modules') {
+                if (isDir && item === "node_modules") {
                     return "continue";
                 }
                 if ((exclude === null || exclude === void 0 ? void 0 : exclude.indexOf(item)) !== -1) {
@@ -105,11 +102,11 @@ function main() {
                 if (_include && !isDir) {
                     var filePath = path_1.default.resolve(root, item);
                     var fileData = (0, fs_1.readFileSync)(filePath).toString();
-                    var data = "/******************************************************************************************\n * Repository: " + repository + "\n * Author: " + name + "\n * Email: <" + email + ">\n * License: " + license + "\n * License Text: " + licenseText + "\n * Copyright: " + copyright + "\n * Create date: " + new Date + "\n******************************************************************************************/\n";
+                    var data = "/******************************************************************************************\n * Repository: " + repository + "\n * Author: " + name + "\n * Email: <" + email + ">\n * License: " + license + "\n * License Text: " + licenseText + "\n * Copyright: " + copyright + "\n * Create date: " + new Date() + "\n******************************************************************************************/\n";
                     var oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
                     if (fileData.match(oldHeaderReg)) {
                         if (renewAll) {
-                            data += fileData.replace(oldHeaderReg, '');
+                            data += fileData.replace(oldHeaderReg, "");
                         }
                         else {
                             data = fileData;
@@ -160,11 +157,11 @@ function main() {
                     // Set config global
                     CONFIG = _a.sent();
                     if (!CONFIG) {
-                        console.info(ERROR, "Config in you package.json is not found see https://github.com/kolserdav/fhead.git/README.md#Configuration");
+                        console.info(ERROR, "https://github.com/kolserdav/fhead#Configuration");
                         return [2 /*return*/, 1];
                     }
                     root = CONFIG.root;
-                    sourcePath = path_1.default.resolve(ROOT, root || '');
+                    sourcePath = path_1.default.resolve(ROOT, root || "");
                     return [4 /*yield*/, new Promise(function (resolve, reject) {
                             (0, fs_1.readdir)(sourcePath, function (err, res) {
                                 if (err) {
@@ -182,11 +179,10 @@ function main() {
                     }
                     // Run script
                     parseDir(sourcePath, source);
-                    console.info('Success added headers!');
+                    console.info("Success added headers!");
                     return [2 /*return*/];
             }
         });
     });
 }
 exports.default = main;
-;
