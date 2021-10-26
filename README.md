@@ -5,7 +5,7 @@ Utility which added headers to all files of specidied directory
 ## Instalation
 
 ```
-npm install -g file-headers
+npm i -g fhead
 ```
 
 ## Configuration
