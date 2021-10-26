@@ -3,9 +3,9 @@
  * Author: Sergey Kolmiller
  * Email: <serega12101983@gmail.com>
  * License: MIT
- * License Text:
+ * License Text: 
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Wed Oct 27 2021 01:57:13 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Wed Oct 27 2021 02:54:34 GMT+0700 (Krasnoyarsk Standard Time)
  ******************************************************************************************/
 import {
   readdir,
