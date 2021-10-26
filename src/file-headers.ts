@@ -5,14 +5,16 @@
  * License: MIT
  * License Text: 
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Wed Oct 13 2021 08:48:52 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Tue Oct 26 2021 22:40:50 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
-import fs, { readdir, readdirSync } from 'fs';
+import { readdir, readdirSync, writeFileSync, lstatSync, readFile, readFileSync } from 'fs';
 import path from 'path';
 
-const root = process.env.NODE_ENV === 'production' ? '../../../' : '../';
+const { NODE_ENV, PWD }: any = process.env;
 
-const CONFIG_PATH = path.resolve(__dirname, root, 'file-headers.json');
+const root = NODE_ENV === 'production' ? '../../../' : './';
+
+const CONFIG_PATH = path.resolve(PWD, root, 'file-headers.json');
 
 const DEFAULT_CONFIG = {
   root: 'src',
@@ -30,7 +32,7 @@ const DEFAULT_CONFIG = {
 let CONFIG: typeof DEFAULT_CONFIG;
 
 function createDefaultConfig(): void {
-  fs.writeFileSync(CONFIG_PATH, JSON.stringify(DEFAULT_CONFIG, null, 2));
+  writeFileSync(CONFIG_PATH, JSON.stringify(DEFAULT_CONFIG, null, 2));
   console.warn(new Date(), `Create default config file on ${CONFIG_PATH} with value:`, DEFAULT_CONFIG);
 }
 
@@ -50,10 +52,10 @@ function createDefaultConfig(): void {
           _include = true;
         }
       });
-      const isDir = fs.lstatSync(itemPath).isDirectory();
+      const isDir = lstatSync(itemPath).isDirectory();
       if (_include && !isDir) {
         const filePath = path.resolve(root, item);
-        let fileData = fs.readFileSync(filePath).toString();
+        let fileData = readFileSync(filePath).toString();
         let data = `/******************************************************************************************
  * Repository: ${CONFIG.repository}
  * Author: ${CONFIG.name}
@@ -73,7 +75,7 @@ function createDefaultConfig(): void {
         } else {
           data += fileData;
         }
-        fs.writeFileSync(filePath, data);
+        writeFileSync(filePath, data);
       } else {
         if (isDir) {
           const subDirPath = path.resolve(root, item);
@@ -85,7 +87,7 @@ function createDefaultConfig(): void {
   }
 
   CONFIG =  await new Promise<typeof DEFAULT_CONFIG>((resolve) => {
-    fs.readFile(CONFIG_PATH, (err, res) => {
+    readFile(CONFIG_PATH, (err, res) => {
       let configData = Object.assign({}, DEFAULT_CONFIG);
       if (err) {
         console.error(new Date(), `File ${CONFIG_PATH} not found`);
@@ -107,9 +109,9 @@ function createDefaultConfig(): void {
   if (!CONFIG) {
     return;
   }
-  const sourcePath = path.resolve(__dirname, root, CONFIG.root);
+  const sourcePath = path.resolve(root, CONFIG.root);
   const source = await new Promise<string[] | void>((resolve, reject) => {
-    fs.readdir(sourcePath, (err, res) => {
+    readdir(sourcePath, (err, res) => {
       if (err) {
         reject(err.message);
       }

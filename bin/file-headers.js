@@ -1,24 +1,5 @@
 #!/usr/bin/env node
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -66,12 +47,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * License: MIT
  * License Text:
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Wed Oct 13 2021 08:48:52 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Tue Oct 26 2021 22:40:50 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
-var fs_1 = __importStar(require("fs"));
+var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
-var root = process.env.NODE_ENV === 'production' ? '../../../' : '../';
-var CONFIG_PATH = path_1.default.resolve(__dirname, root, 'file-headers.json');
+var _a = process.env, NODE_ENV = _a.NODE_ENV, PWD = _a.PWD;
+var root = NODE_ENV === 'production' ? '../../../' : './';
+var CONFIG_PATH = path_1.default.resolve(PWD, root, 'file-headers.json');
 var DEFAULT_CONFIG = {
     root: 'src',
     repository: 'https://github.com/kolserdav/file-headers.git',
@@ -86,7 +68,7 @@ var DEFAULT_CONFIG = {
 };
 var CONFIG;
 function createDefaultConfig() {
-    fs_1.default.writeFileSync(CONFIG_PATH, JSON.stringify(DEFAULT_CONFIG, null, 2));
+    (0, fs_1.writeFileSync)(CONFIG_PATH, JSON.stringify(DEFAULT_CONFIG, null, 2));
     console.warn(new Date(), "Create default config file on " + CONFIG_PATH + " with value:", DEFAULT_CONFIG);
 }
 (function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -104,10 +86,10 @@ function createDefaultConfig() {
                     _include = true;
                 }
             });
-            var isDir = fs_1.default.lstatSync(itemPath).isDirectory();
+            var isDir = (0, fs_1.lstatSync)(itemPath).isDirectory();
             if (_include && !isDir) {
                 var filePath = path_1.default.resolve(root, item);
-                var fileData = fs_1.default.readFileSync(filePath).toString();
+                var fileData = (0, fs_1.readFileSync)(filePath).toString();
                 var data = "/******************************************************************************************\n * Repository: " + CONFIG.repository + "\n * Author: " + CONFIG.name + "\n * Email: <" + CONFIG.email + ">\n * License: " + CONFIG.license + "\n * License Text: " + CONFIG.licenseText + "\n * Copyright: " + CONFIG.copyright + "\n * Create date: " + new Date + "\n******************************************************************************************/\n";
                 var oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
                 if (fileData.match(oldHeaderReg)) {
@@ -121,12 +103,12 @@ function createDefaultConfig() {
                 else {
                     data += fileData;
                 }
-                fs_1.default.writeFileSync(filePath, data);
+                (0, fs_1.writeFileSync)(filePath, data);
             }
             else {
                 if (isDir) {
                     var subDirPath = path_1.default.resolve(root, item);
-                    var dir = fs_1.readdirSync(subDirPath);
+                    var dir = (0, fs_1.readdirSync)(subDirPath);
                     parseDir(subDirPath, dir);
                 }
             }
@@ -139,7 +121,7 @@ function createDefaultConfig() {
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, new Promise(function (resolve) {
-                    fs_1.default.readFile(CONFIG_PATH, function (err, res) {
+                    (0, fs_1.readFile)(CONFIG_PATH, function (err, res) {
                         var configData = Object.assign({}, DEFAULT_CONFIG);
                         if (err) {
                             console.error(new Date(), "File " + CONFIG_PATH + " not found");
@@ -165,9 +147,9 @@ function createDefaultConfig() {
                 if (!CONFIG) {
                     return [2 /*return*/];
                 }
-                sourcePath = path_1.default.resolve(__dirname, root, CONFIG.root);
+                sourcePath = path_1.default.resolve(root, CONFIG.root);
                 return [4 /*yield*/, new Promise(function (resolve, reject) {
-                        fs_1.default.readdir(sourcePath, function (err, res) {
+                        (0, fs_1.readdir)(sourcePath, function (err, res) {
                             if (err) {
                                 reject(err.message);
                             }

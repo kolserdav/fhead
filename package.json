@@ -1,9 +1,9 @@
 {
   "name": "file-headers",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "main": "bin/file-headers.js",
   "bin": {
-    "file-headers": "./bin/file-headers.js"
+    "file-headers": "NODE_ENV=production ./bin/file-headers.js"
   },
   "repository": "https://github.com/kolserdav/file-headers",
   "author": "kolserdav <serega12101983@gmail.com>",
@@ -22,6 +22,7 @@
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0"
+    "eslint-plugin-promise": "^5.1.0",
+    "typescript": "^4.4.4"
   }
 }
