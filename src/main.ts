@@ -137,8 +137,8 @@ export default async function main() {
     }
   );
   if (!CONFIG) {
-    console.info(
-      ERROR,
+    console.warn(
+      WARNING,
       `Config in you package.json is not found see https://github.com/kolserdav/fhead#Configuration`
     );
     return 1;
@@ -155,7 +155,8 @@ export default async function main() {
       resolve(res);
     });
   }).catch((e) => {
-    console.error(new Date(), e);
+    console.error(ERROR, e.message);
+    console.warn(WARNING, "Specified root path cannot be reading");
   });
   if (!source) {
     return;
@@ -163,5 +164,5 @@ export default async function main() {
 
   // Run script
   parseDir(sourcePath, source);
-  console.info("Success added headers!");
+  console.info(INFO, "Success added headers!");
 }
