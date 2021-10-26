@@ -47,7 +47,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * License: MIT
  * License Text:
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Wed Oct 27 2021 01:25:16 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Wed Oct 27 2021 01:57:13 GMT+0700 (Krasnoyarsk Standard Time)
 ******************************************************************************************/
 var main_1 = __importDefault(require("./main"));
 (function () { return __awaiter(void 0, void 0, void 0, function () {

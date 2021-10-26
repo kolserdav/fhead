@@ -46,7 +46,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * License: MIT
  * License Text:
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Wed Oct 27 2021 01:25:16 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create date: Wed Oct 27 2021 01:57:13 GMT+0700 (Krasnoyarsk Standard Time)
  ******************************************************************************************/
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
@@ -105,7 +105,7 @@ function main() {
                 if (_include && !isDir) {
                     var filePath = path_1.default.resolve(root, item);
                     var fileData = (0, fs_1.readFileSync)(filePath).toString();
-                    var data = "/******************************************************************************************\n * Repository: " + repository + "\n * Author: " + name + "\n * Email: <" + email + ">\n * License: " + license + "\n * License Text: " + licenseText + "\n * Copyright: " + copyright + "\n * Create date: " + new Date() + "\n******************************************************************************************/\n";
+                    var data = "/******************************************************************************************\n * Repository: " + repository + "\n * Author: " + name + "\n * Email: <" + email + ">\n * License: " + license + "\n * License Text: " + licenseText + "\n * Copyright: " + copyright + "\n * Create date: " + new Date() + "\n ******************************************************************************************/\n";
                     var oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
                     if (fileData.match(oldHeaderReg)) {
                         if (renewAll) {

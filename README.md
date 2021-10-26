@@ -1,6 +1,6 @@
 # File Headers
 
-Utility which added headers to all files of specidied directory
+Command line utility for add header to files from specify directory
 
 ## Instalation
 
@@ -14,6 +14,7 @@ npm i -g fhead
 
 ```json
 "fhead": {
+    "comment": "/** Do not use this config in production! */",
     "root": "src",
     "repository": "https://github.com/kolserdav/fhead.git",
     "patterns": [
@@ -24,15 +25,23 @@ npm i -g fhead
     "name": "Sergey Kolmiller",
     "email": "serega12101983@gmail.com",
     "license": "MIT",
-    "licenseText": "",
+    "licenseText": "Text",
     "copyright": "kolserdav, All rights reserved (c)",
     "renewAll": true
   }
 ```
 
-- Add script to your `package.json` file:
+**Do not use this config in production!**
 
 ## Run
+
+Go to project:
+
+```
+cd projectname
+```
+
+Start writing:
 
 ```
 fhead
@@ -46,7 +55,7 @@ fhead
  * Author: Sergey Kolmiller
  * Email: <serega12101983@gmail.com>
  * License: MIT
- * License Text:
+ * License Text: Text
  * Copyright: kolserdav, All rights reserved (c)
  * Create date: Wed Oct 13 2021 08:48:52 GMT+0700 (Krasnoyarsk Standard Time)
  ******************************************************************************************/
