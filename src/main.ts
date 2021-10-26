@@ -3,10 +3,10 @@
  * Author: Sergey Kolmiller
  * Email: <serega12101983@gmail.com>
  * License: MIT
- * License Text: 
+ * License Text:
  * Copyright: kolserdav, All rights reserved (c)
  * Create date: Wed Oct 27 2021 01:57:13 GMT+0700 (Krasnoyarsk Standard Time)
-******************************************************************************************/
+ ******************************************************************************************/
 import {
   readdir,
   readdirSync,
@@ -95,7 +95,7 @@ export default async function main() {
  * License Text: ${licenseText}
  * Copyright: ${copyright}
  * Create date: ${new Date()}
-******************************************************************************************/\n`;
+ ******************************************************************************************/\n`;
         const oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
         if (fileData.match(oldHeaderReg)) {
           if (renewAll) {
