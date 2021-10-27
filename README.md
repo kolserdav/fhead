@@ -2,8 +2,6 @@
 
 Command line utility for add header to files from specify directory
 
-**Project is deprecated use https://github.com/kolserdav/fhead.git instead this**
-
 ## Instalation
 
 ```
