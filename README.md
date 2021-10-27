@@ -1,5 +1,7 @@
 # File Headers
 
+**Project is deprecated use https://github.com/kolserdav/fhead.git instead this**
+
 Command line utility for add header to files from specify directory
 
 ## Instalation
