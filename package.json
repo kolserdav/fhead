@@ -1,11 +1,11 @@
 {
-  "name": "file-headers",
+  "name": "fhead",
   "version": "3.1.10",
   "main": "bin/fhead.js",
   "bin": {
     "fhead": "./bin/fhead.js"
   },
-  "repository": "https://github.com/kolserdav/file-headers",
+  "repository": "https://github.com/kolserdav/fhead",
   "author": "kolserdav <serega12101983@gmail.com>",
   "license": "MIT",
   "scripts": {
