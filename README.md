@@ -2,7 +2,7 @@
 
 Command line utility for add header to files from specify directory
 
-**Project is deprecated use https://github.com/kolserdav/fhead.git instead**
+**Project is deprecated use https://www.npmjs.com/package/fhead instead**
 
 ## Instalation
 
