@@ -5,6 +5,16 @@
   "bin": {
     "fhead": "./bin/fhead.js"
   },
+  "keywords": [
+    "file",
+    "license",
+    "header",
+    "comment",
+    "copyright",
+    "repository",
+    "date",
+    "author"
+  ],
   "repository": "https://github.com/kolserdav/fhead",
   "author": "kolserdav <serega12101983@gmail.com>",
   "license": "MIT",
