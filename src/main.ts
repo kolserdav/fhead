@@ -89,12 +89,13 @@ export default async function main() {
         const fileData = readFileSync(filePath).toString();
         let data = `/******************************************************************************************
  * Repository: ${repository}
+ * File name: ${item} 
  * Author: ${name}
  * Email: <${email}>
  * License: ${license}
- * License Text: ${licenseText}
+ * License text: ${licenseText}
  * Copyright: ${copyright}
- * Create date: ${new Date()}
+ * Create Date: ${new Date()}
  ******************************************************************************************/\n`;
         const oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
         if (fileData.match(oldHeaderReg)) {
