@@ -1,14 +1,15 @@
 /******************************************************************************************
  * Repository: https://github.com/kolserdav/fhead.git
+ * File name: main.ts 
  * Author: Sergey Kolmiller
  * Email: <serega12101983@gmail.com>
  * License: MIT
- * License Text: 
+ * License text: 
  * Copyright: kolserdav, All rights reserved (c)
- * Create date: Wed Oct 27 2021 02:54:34 GMT+0700 (Krasnoyarsk Standard Time)
+ * Create Date: Fri Dec 17 2021 08:43:56 GMT+0700 (Красноярск, стандартное время)
  ******************************************************************************************/
 import {
-  readdir,
+  readdir, 
   readdirSync,
   writeFileSync,
   lstatSync,
@@ -17,8 +18,7 @@ import {
 } from "fs";
 import path from "path";
 
-const { PWD }: any = process.env;
-
+const PWD =  process.cwd();
 const ERROR = "error";
 const WARNING = "warning";
 const INFO = "info";
@@ -97,7 +97,7 @@ export default async function main() {
  * Copyright: ${copyright}
  * Create Date: ${new Date()}
  ******************************************************************************************/\n`;
-        const oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\n/;
+        const oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\r?\n/;
         if (fileData.match(oldHeaderReg)) {
           if (renewAll) {
             data += fileData.replace(oldHeaderReg, "");
