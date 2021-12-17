@@ -89,7 +89,7 @@ export default async function main() {
         const fileData = readFileSync(filePath).toString();
         let data = `/******************************************************************************************
  * Repository: ${repository}
- * File name: ${item.trim()} 
+ * File name: ${item}
  * Author: ${name}
  * Email: <${email}>
  * License: ${license}

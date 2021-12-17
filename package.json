@@ -1,6 +1,6 @@
 {
   "name": "fhead",
-  "version": "3.2.4",
+  "version": "3.2.5",
   "main": "bin/main.js",
   "bin": {
     "fhead": "./bin/fhead.js"
