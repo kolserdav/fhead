@@ -1,6 +1,6 @@
 {
   "name": "fhead",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "main": "bin/fhead.js",
   "bin": {
     "fhead": "./bin/fhead.js"
@@ -59,6 +59,6 @@
     "license": "MIT",
     "licenseText": "",
     "copyright": "kolserdav, All rights reserved (c)",
-    "renewAll": true
+    "renewAll": false
   }
 }

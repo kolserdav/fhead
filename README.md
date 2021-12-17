@@ -51,11 +51,12 @@ fhead
 
 ```javascript
 /******************************************************************************************
- * Repository: https://github.com/kolserdav/file-headers.git
+ * Repository: https://github.com/kolserdav/fhead.git
+ * File name: index.ts
  * Author: Sergey Kolmiller
  * Email: <serega12101983@gmail.com>
  * License: MIT
- * License Text: Text
+ * License text: Text
  * Copyright: kolserdav, All rights reserved (c)
  * Create date: Wed Oct 13 2021 08:48:52 GMT+0700 (Krasnoyarsk Standard Time)
  ******************************************************************************************/
