@@ -1,12 +1,12 @@
 /******************************************************************************************
  * Repository: https://github.com/kolserdav/fhead.git
- * File name: main.ts 
+ * File name: main.ts
  * Author: Sergey Kolmiller
  * Email: <serega12101983@gmail.com>
  * License: MIT
- * License text: 
+ * License text: See LICENSE file
  * Copyright: kolserdav, All rights reserved (c)
- * Create Date: Fri Dec 17 2021 08:43:56 GMT+0700 (Красноярск, стандартное время)
+ * Create Date: Fri Sep 20 2024 13:05:53 GMT+0700 (Krasnoyarsk Standard Time)
  ******************************************************************************************/
 import {
   readdir, 
@@ -36,7 +36,7 @@ const DEFAULT_CONFIG = {
     name: "Sergey Kolmiller",
     email: "serega12101983@gmail.com",
     license: "MIT",
-    licenseText: "",
+    licenseText: "See LIXENSE file",
     copyright: "kolserdav, All rights reserved (c)",
     renewAll: true,
   },
@@ -87,22 +87,31 @@ export default async function main() {
       if (_include && !isDir) {
         const filePath = path.resolve(root, item);
         const fileData = readFileSync(filePath).toString();
+        const filename = item.trim();
+        const filenameNew = `* File name: ${filename}`;
+        const filenameReg = /\* File name: .+/;
+        const createDateNew = `* Create Date: ${new Date()}`;
+        const createDateReg = /\* Create Date: .+/;
         let data = `/******************************************************************************************
  * Repository: ${repository}
- * File name: ${item.trim()}
+ ${filenameNew}
  * Author: ${name}
  * Email: <${email}>
  * License: ${license}
  * License text: ${licenseText}
  * Copyright: ${copyright}
- * Create Date: ${new Date()}
+ ${createDateNew}
  ******************************************************************************************/\n`;
         const oldHeaderReg = /^\/\*{90}[\s\S.]*\*{90}\/\r?\n/;
         if (fileData.match(oldHeaderReg)) {
           if (renewAll) {
             data += fileData.replace(oldHeaderReg, "");
           } else {
-            data = fileData;
+            data = fileData.replace(filenameReg, filenameNew);
+            if (!new RegExp(`\\${filenameNew}`).test(fileData)) {
+              data = data.replace(createDateReg, createDateNew);
+            }
+            
           }
         } else {
           data += fileData;
@@ -140,6 +149,7 @@ export default async function main() {
       });
     }
   );
+
   if (!CONFIG) {
     console.warn(
       WARNING,

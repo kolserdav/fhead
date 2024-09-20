@@ -1,12 +1,12 @@
 /******************************************************************************************
  * Repository: https://github.com/kolserdav/fhead.git
- * File name: fhead.ts 
+ * File name: fhead.ts
  * Author: Sergey Kolmiller
  * Email: <serega12101983@gmail.com>
  * License: MIT
- * License text: 
+ * License text: See LICENSE file
  * Copyright: kolserdav, All rights reserved (c)
- * Create Date: Fri Dec 17 2021 08:43:56 GMT+0700 (Красноярск, стандартное время)
+ * Create Date: Fri Sep 20 2024 13:05:53 GMT+0700 (Krasnoyarsk Standard Time)
  ******************************************************************************************/
 
 

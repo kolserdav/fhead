@@ -1,6 +1,6 @@
 {
   "name": "fhead",
-  "version": "3.2.7",
+  "version": "3.2.8",
   "main": "bin/main.js",
   "bin": {
     "fhead": "./bin/fhead.js"
@@ -20,7 +20,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p . && node scripts/index.js env",
-    "start": "node ${npm_package_main}",
+    "start": "node bin/fhead.js",
     "dev:watch": "tsc -p . -w",
     "dev:start": "nodemon ./bin/fhead.js"
   },
@@ -57,9 +57,8 @@
     "name": "Sergey Kolmiller",
     "email": "serega12101983@gmail.com",
     "license": "MIT",
-    "licenseText": "",
+    "licenseText": "See LICENSE file",
     "copyright": "kolserdav, All rights reserved (c)",
-    "renewAll": true,
-    "removeFheadVersion": false
+    "renewAll": false
   }
 }
