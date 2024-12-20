@@ -73,7 +73,7 @@ export default async function main() {
       if (isDir && item === "node_modules") {
         continue;
       }
-      if (exclude?.indexOf(item) !== -1) {
+      if (exclude !== undefined && exclude.indexOf(item) !== -1) {
         continue;
       }
 
